@@ -1,0 +1,16 @@
+const express = require("express")
+const bookRoute = require("./routes/bookroute")
+const userRoute = require("./routes/userRoute")
+const dotenv = require("dotenv")
+const {connectDB}=require("/db/connect")
+const dns = require("dns")
+const app = express()
+dotenv.config()
+app.use(express.json())
+app.use(bookRoute)
+app.use(userRoute)
+connectDB()
+
+app.listen(4000,()=>{
+    console.log("Server Listening....")
+})
